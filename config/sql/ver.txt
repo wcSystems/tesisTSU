@@ -1,0 +1,609 @@
+
+        <ol class="breadcrumb page-breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0);">Home</a></li>
+            <li class="breadcrumb-item">Inicio</li>
+        </ol>
+        <div class="row">
+            <div class="col-12">
+                <div class="subheader">
+                    <h1 class="subheader-title">
+                        <i class='subheader-icon fal fa-chart-area'></i> Análisis Estadísticos
+                        <small></small>
+                    </h1>
+                    <div id="premios" class="subheader-block d-lg-flex align-items-center"></div>
+                    <div id="utilidad_dias" class="subheader-block d-lg-flex align-items-center border-faded border-right-0 border-top-0 border-bottom-0 ml-3 pl-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="panel-1" class="panel  " data-panel-lock="false" data-panel-close="false" data-panel-fullscreen="false" data-panel-collapsed="false" data-panel-color="false" data-panel-locked="false" data-panel-refresh="false" data-panel-reset="false">
+                            <div class="panel-hdr">
+                                <h2>
+                                    Volumen de Jugada
+                                </h2>
+                                <div class="panel-toolbar pr-3 align-self-end">
+                                    <ul id="demo_panel-tabs" class="nav nav-tabs border-bottom-0 nav-tabs-clean" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" data-toggle="tab" href="#tab_default-1" onclick="agencias_lines()" role="tab">Agencias</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#tab_default-2" onclick="taquillas_lines()" role="tab">Taquillas</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="panel-container show">
+                                <div class="panel-content border-faded border-left-0 border-right-0 border-top-0">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-7 col-xl-8">
+                                            <div class="position-relative">
+                                                <div class="custom-control custom-switch position-absolute pos-top pos-left ml-5 mt-3 z-index-cloud">
+                                                    <input type="checkbox" class="custom-control-input" id="start_interval">
+                                                    <label class="custom-control-label" for="start_interval">Automatico</label>
+                                                </div>
+                                                <div id="chart01" style="height:242px"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 col-xl-4 pl-lg-3">
+                                            <div  id="agencias_lineas">
+                                            </div>
+                                            <div style="display: none" id="taquillas_lineas">
+                                            </div>  
+                                            <div class="row no-gutters">
+                                                <div class="col-6 pr-1">
+                                                    <a href="#" class="btn btn-default btn-block">Agencias</a>
+                                                </div>
+                                                <div class="col-6 pl-1">
+                                                    <a href="#" class="btn btn-default btn-block">Loterias</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-content p-0">
+                                    <div class="row row-grid no-gutters">
+                                        <div id="actividades" class="col-sm-12 col-md-6 col-lg-6 col-xl-3"></div>
+                                        <div id="tickets_pagados" class="col-sm-12 col-md-6 col-lg-6 col-xl-3"></div>
+                                        <div id="deudas" class="col-sm-12 col-md-6 col-lg-6 col-xl-3"></div>
+                                        <div id="utilidad_global_diaria" class="col-sm-12 col-md-6 col-lg-6 col-xl-3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div id="panel-7" class="panel">
+                    <div class="panel-hdr">
+                        <h2>
+                        <span class="fw-300"><i>Grafico global semanal de utilidad master</i></span>
+                        </h2>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <div id="chart02">
+                                <canvas style="width:100%; height:300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div id="panel-10" class="panel">
+                    <div class="panel-hdr">
+                        <h2>
+                            <span class="fw-300"><i>Utilidad media del dia</i></span>
+                        </h2>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <div id="chart04">
+                                <canvas style="width:100%; height:300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div id="panel-10" class="panel">
+                    <div class="panel-hdr">
+                        <h2>
+                            <span class="fw-300"><i>Promedio dia</i></span>
+                        </h2>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <div id="chart03">
+                                <canvas style="width:100%; height:300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div id="panel-12" class="panel">
+                    <div class="panel-hdr">
+                        <h2>
+                            <span class="fw-300"><i>Distribucion de utilidad diario</i></span>
+                        </h2>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <div id="chart05">
+                                <canvas style="width:100%; height:300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div id="panel-12" class="panel">
+                    <div class="panel-hdr">
+                        <h2>
+                            <span class="fw-300"><i>Utilidad porcentual promedio del dia</i></span>
+                        </h2>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <div id="chart06">
+                                <canvas style="width:100%; height:300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div id="panel-4" class="panel">
+                    <div class="panel-hdr">
+                        <h2>
+                            <span class="fw-300"><i>Porcentaje  frente animalito</i></span>
+                        </h2>
+                    </div>
+                    <div class="panel-container show">
+                        <div class="panel-content">
+                            <div id="chart07">
+                                <canvas style="width:100%; height:300px;"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <script>
+
+            //variables consultadas del backend
+            let status_taquilla = {!! $status_taquilla !!}
+            let pago_taquilla = {!! $pago_taquilla !!}
+            let status_master = {!! $status !!}
+            let pago_master = {!! $pago !!}
+            let elementos = {!! $elementos !!}
+            let agencias_lineas = {!! $agencias !!}
+            let taquillas_lineas = {!! $ticketoffice !!}
+            let deudas_lineas = {!! $deuda !!}
+            let contra = {!! $contra !!}
+            let premios = {!! $premios !!}
+            let ventas = {!! $venta !!}
+            let utilidad_dias = {!! $utiladad_dias !!}
+            let utilidad_horas = {!! $utiladad_horas !!}
+            let distribucion_dias = {!! $distribucion_dias !!}
+            let distribucion_porcentual = {!! $distribucion_porcentual !!}
+            let distribucion_semana = {!! $distribucion_semana !!}
+            let utilidad_global = {!! $utilidad_global !!}
+
+
+
+
+
+            
+            
+            //arrays
+            let arr_status = []
+            let arr_status_linea = []
+            let elementos_description = []
+            let elementos_monto = []
+            let elementos_ticket = []
+            let porcentaje_dispersion = []
+            let arr_taquillas = []
+            let arr_deudas = []
+            let new_arr = []
+            let arr_premios = []
+            let arr_utilidad_dias = []
+            let arr_utilidad_horas_ganancias = []
+            let arr_utilidad_horas_horas = []
+            let arr_utilidad_horas_porcentaje = []
+            let arr_distribucion_dias_label = []
+            let arr_distribucion_dias_monto = []
+            let arr_distribucion_porcentual = []
+            let arr_distribucion_semana_moneda = []
+            let arr_distribucion_semana_porcentaje = []
+            let arr_distribucion_semana_dia = []
+            let arr_utilidad_horas_ganancias_limit_10 = []
+
+            
+
+
+            //sumadores
+            let sum_dispersion = 0
+            let sum = 0
+            let sum2 = 0
+            let sum3 = 0
+            let sum_premios = 0
+            let sum_utilidad_dias = 0
+            let sum_utilidad_horas_porcentaje = 0
+            let arr_utilidad_horas_ganancias_min = 0
+            let arr_utilidad_horas_ganancias_max = 0
+
+            //concat add append
+            let add = ''
+            let add2 = ''
+            let add3 = ''
+            let addGrafico01 = ''
+
+
+
+            //grafico numero 2
+            distribucion_semana.forEach(element => {
+                arr_distribucion_semana_dia.push(moment(element.fecha, "YYYY-MM-DD").format("dddd"))
+                arr_distribucion_semana_moneda.push((element.utilidad_promedio).toFixed(2))
+                arr_distribucion_semana_porcentaje.push((element.utilidad_porcentual).toFixed(2))
+            });
+
+
+            //grafica 4 utilidad media del dia
+            utilidad_horas.forEach(element => {
+                sum_utilidad_horas_porcentaje += element.ganancia
+            });
+
+
+            //grafica 5 porcentual promedio del dia
+            distribucion_porcentual.forEach(element => {
+                arr_distribucion_porcentual.push(element.utilidad)
+                arr_distribucion_porcentual.push(element.utilidad_porcentual)
+            });
+            
+
+            //grafica 4 utilidad media del dia
+            utilidad_horas.forEach(element => {
+                arr_utilidad_horas_ganancias.push((element.ganancia).toFixed(2))
+                arr_utilidad_horas_horas.push(element.hora)
+                arr_utilidad_horas_porcentaje.push(((element.ganancia/sum_utilidad_horas_porcentaje)*100).toFixed(2))
+            });
+
+            arr_utilidad_horas_ganancias_max = Math.max.apply(null,arr_utilidad_horas_ganancias)
+            arr_utilidad_horas_ganancias_min = Math.min.apply(null,arr_utilidad_horas_ganancias)
+            arr_utilidad_horas_ganancias_limit_10 = arr_utilidad_horas_ganancias.slice(0, 10);
+
+            //grafica 4 utilidad diaria
+            distribucion_dias.forEach(element => {
+                arr_distribucion_dias_label.push(element.name)
+                arr_distribucion_dias_monto.push(element.ganancia)
+            });
+
+            //datos para barra superior premios (arriba a la derecha)
+            premios.forEach(element => {
+                arr_premios.push(element.primios)
+                sum_premios += element.primios
+            });
+
+
+            //datos para barra superior utilidad (arriba a la derecha)
+            utilidad_dias.forEach(element => {
+                arr_utilidad_dias.push(element.ganancia)
+                sum_utilidad_dias += element.ganancia
+            });
+
+            //tikets pagados graficos pequeños (2 de 4)
+            if(status_taquilla == ''){
+                for (let index = 0; index < 2; index++) {
+                    pago_master = 0
+                    status_master = 1
+                    arr_status.push({descripcion:'1',contador_ticket:1,contador_ticket_pagos:0})
+                    arr_status_linea.push(0)
+                }
+            }else{
+                status_taquilla.forEach(element1 => {
+                    let obj = {}
+                    pago_taquilla.forEach(element2 => {
+                        obj.descripcion = element1.descripcion
+                        obj.contador_ticket = element1.contador_ticket
+                        obj.contador_ticket_pagos = element2.contador_ticket
+                    });
+                    arr_status.push(obj)
+                    arr_status_linea.push(((obj.contador_ticket_pagos/obj.contador_ticket)*100).toFixed(2))
+                });
+            }
+            
+            if(status_taquilla.length <= 1){
+                arr_status.push({descripcion:'1',contador_ticket:1,contador_ticket_pagos:0})
+                arr_status.push({descripcion:'1',contador_ticket:1,contador_ticket_pagos:0})
+                arr_status_linea.push(0)
+            }
+
+            //datos para la grafica promedio dia
+            elementos.forEach(element => {
+                elementos_description.push(element.description)
+                elementos_monto.push(element.bet_value_id)
+                elementos_ticket.push(element.contador_ticket)
+            });
+
+
+            //dataset para grafica de dispersion (suma de todas las dispersiones)
+            elementos.forEach(element => {
+                sum_dispersion += element.bet_value_id
+            });
+
+            //dataset para grafica de dispersion (nombre y valor)
+            elementos.forEach(element => {
+                obj = {}
+                let number = element.bet_value_id/sum_dispersion*100
+                obj['valor'] = number.toFixed(2)
+                obj['nombre'] = element.description
+                porcentaje_dispersion.push(obj)
+            });
+
+
+            //dataset para grafica de dispersion (datos)
+            porcentaje_dispersion.forEach(function(element, index) {
+                arra_qq = {}
+                arra_qq['label'] = element.nombre
+                arra_qq['backgroundColor'] = colors_codigo[index];
+                arra_qq['borderColor'] = colors_codigo[index];
+                arra_qq['data'] = [{'x':index+1,'y':element.valor,'r':10}]
+                new_arr.push(arra_qq)  
+            });
+
+
+            //suma de todas las agencias
+            agencias_lineas.forEach(element => {
+                sum += element.recaudado
+            });
+
+
+            //suma de todas taquillas 
+            taquillas_lineas.forEach(element => {
+                sum2 += element.recaudado
+            });
+
+
+            //suma de deudas general
+            deudas_lineas.forEach(element => {
+                sum3 += element.total_master
+                arr_deudas.push(element.total_master)
+            });
+            if(deudas_lineas.length <= 2){
+                arr_deudas.push(1)
+                arr_deudas.push(1)
+            }
+            
+
+            //agencia contra total de todo (a la derecha al lado de la grafica principal)
+            agencias_lineas.forEach(function(element, indice) {
+                add +=`
+                <div class="d-flex mt-2">
+                    ${element.name}
+                    <span class="d-inline-block ml-auto">${element.recaudado.toFixed(2)} / ${sum.toFixed(2)}</span>
+                </div>
+                <div class="progress progress-sm mb-3">
+                    <div class="progress-bar ${colors[indice]}" role="progressbar" style="width: ${(element.recaudado/sum*100).toFixed(2)}%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>`
+            });
+            $('#agencias_lineas').empty().append(add)
+
+
+            //taquillas contra total de todo (a la derecha al lado de la grafica principal)
+            taquillas_lineas.forEach(function(element, indice) {
+                arr_taquillas.push(element.recaudado)
+                add2 +=`
+                <div class="d-flex mt-2">
+                    ${element.agencia} | ${element.name}
+                    <span class="d-inline-block ml-auto">${element.recaudado.toFixed(2)} / ${sum.toFixed(2)}</span>
+                </div>
+                <div class="progress progress-sm mb-3">
+                    <div class="progress-bar ${colors[indice]}" role="progressbar" style="width: ${(element.recaudado/sum*100).toFixed(2)}%;" aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>`
+            });
+            $('#taquillas_lineas').empty().append(add2)
+
+
+            //grafica de tickets pagados ( 1 de 2 )
+            $('#premios').empty().append(`<div class="d-inline-flex flex-column justify-content-center mr-3">
+                                                <span class="fw-300 fs-xs d-block opacity-50">
+                                                    <small>Premios</small>
+                                                </span>
+                                                <span class="fw-500 fs-xl d-block color-primary-500">
+                                                    $${sum_premios.toFixed(2)}
+                                                </span>
+                                            </div>
+                                            <span class="sparklines hidden-lg-down" sparkType="bar" sparkBarColor="#886ab5" sparkHeight="32px" sparkBarWidth="5px" values="${arr_premios.toString()}"></span>`)
+            
+            
+            //grafica de tickets pagados ( 2 de 2 )
+            $('#utilidad_dias').empty().append(`<div class="d-inline-flex flex-column justify-content-center mr-3">
+                                                <span class="fw-300 fs-xs d-block opacity-50">
+                                                    <small>Utilidad</small>
+                                                </span>
+                                                <span class="fw-500 fs-xl d-block color-danger-500">
+                                                    $${sum_utilidad_dias.toFixed(2)}
+                                                </span>
+                                            </div>
+                                            <span class="sparklines hidden-lg-down" sparkType="bar" sparkBarColor="#fe6bb0" sparkHeight="32px" sparkBarWidth="5px" values="${arr_utilidad_dias.toString()}"></span>`)
+
+
+            //grafica de actividades de taquillas (1 de 4 pequeñitas)
+            addGrafico01 +=`<div class="px-3 py-2 d-flex align-items-center">
+                                <div class="js-easy-pie-chart color-primary-300 position-relative d-inline-flex align-items-center justify-content-center" data-percent="${(arr_taquillas[0]*100)/sum2}" data-piesize="50" data-linewidth="5" data-linecap="butt" data-scalelength="0">
+                                    <div class="d-flex flex-column align-items-center justify-content-center position-absolute pos-left pos-right pos-top pos-bottom fw-300 fs-lg">
+                                        <span class="js-percent d-block text-dark"></span>
+                                    </div>
+                                </div>
+                                <span class="d-inline-block ml-2 text-muted">
+                                    Actividad de taquillas
+                                    <i class="fal fa-caret-up color-danger-500 ml-1"></i>
+                                </span>
+                                <div class="ml-auto d-inline-flex align-items-center">
+                                    <div class="sparklines d-inline-flex" sparktype="line" sparkheight="30" sparkwidth="70" sparklinecolor="#886ab5" sparkfillcolor="false" sparklinewidth="1" values="${arr_taquillas.toString()}"></div>
+                                    <div class="d-inline-flex flex-column small ml-2">
+                                        <span class="d-inline-block badge badge-success opacity-50 text-center p-1 width-6">${((arr_taquillas[1]*100)/sum2).toFixed(2)}</span>
+                                        <span class="d-inline-block badge bg-fusion-300 opacity-50 text-center p-1 width-6 mt-1">${((arr_taquillas[2]*100)/sum2).toFixed(2)}</span>
+                                    </div>
+                                </div>
+                            </div>`
+                            $('#actividades').empty().append(addGrafico01)
+
+                
+
+            //graficas de deudas de afiliado (3 de 4 pequeñitas)
+            $('#deudas').empty().append(`<div class="px-3 py-2 d-flex align-items-center">
+                                            <div class="js-easy-pie-chart color-info-500 position-relative d-inline-flex align-items-center justify-content-center" data-percent="${((arr_deudas[0]*100)/sum3).toFixed(2)}" data-piesize="50" data-linewidth="5" data-linecap="butt">
+                                                <div class="d-flex flex-column align-items-center justify-content-center position-absolute pos-left pos-right pos-top pos-bottom fw-300 fs-lg">
+                                                    <span class="js-percent d-block text-dark"></span>
+                                                </div>
+                                            </div>
+                                            <span class="d-inline-block ml-2 text-muted">
+                                                Deuda Afiliado
+                                                <i class="fal fa-caret-up color-success-500 ml-1"></i>
+                                            </span>
+                                            <div class="ml-auto d-inline-flex align-items-center">
+                                                <div class="sparklines d-inline-flex" sparktype="line" sparkheight="30" sparkwidth="70" sparklinecolor="#51adf6" sparkfillcolor="false" sparklinewidth="1" values="${arr_deudas.toString()}"></div>
+                                                <div class="d-inline-flex flex-column small ml-2">
+                                                    <span class="d-inline-block badge bg-fusion-500 opacity-50 text-center p-1 width-6">${((arr_deudas[1]*100)/sum3).toFixed(2)}</span>
+                                                    <span class="d-inline-block badge bg-fusion-300 opacity-50 text-center p-1 width-6 mt-1">${((arr_deudas[2]*100)/sum3).toFixed(2)}</span>
+                                                </div>
+                                            </div>
+                                        </div>`)
+
+
+            //grafica de tickets pagados (2 de 4 pequeñitas)
+            $('#tickets_pagados').empty().append(`<div class="px-3 py-2 d-flex align-items-center">
+                                                    <div class="js-easy-pie-chart color-success-500 position-relative d-inline-flex align-items-center justify-content-center" data-percent="${((pago_master/status_master)*100).toFixed(2)}" data-piesize="50" data-linewidth="5" data-linecap="butt">
+                                                        <div class="d-flex flex-column align-items-center justify-content-center position-absolute pos-left pos-right pos-top pos-bottom fw-300 fs-lg">
+                                                            <span class="js-percent d-block text-dark"></span>
+                                                        </div>
+                                                    </div>
+                                                    <span class="d-inline-block ml-2 text-muted">
+                                                        Cantidad de ticket pagados
+                                                        <i class="fal fa-caret-down color-success-500 ml-1"></i>
+                                                    </span>
+                                                    <div class="ml-auto d-inline-flex align-items-center">
+                                                        <div class="sparklines d-inline-flex" sparktype="line" sparkheight="30" sparkwidth="70" sparklinecolor="#1dc9b7" sparkfillcolor="false" sparklinewidth="1" values="${arr_status_linea.toString()}"></div>
+                                                        <div class="d-inline-flex flex-column small ml-2">
+                                                            <span class="d-inline-block badge badge-info opacity-50 text-center p-1 width-6">${((arr_status[0].contador_ticket_pagos/arr_status[0].contador_ticket)*100).toFixed(2)}</span>
+                                                            <span class="d-inline-block badge bg-warning-300 opacity-50 text-center p-1 width-6 mt-1">${((arr_status[1].contador_ticket_pagos/arr_status[1].contador_ticket)*100).toFixed(2)}</span>
+                                                        </div>
+                                                    </div>
+                                                </div>`)
+
+
+            //utilidad global diaria (4 de 4 pequeñitas)
+            $('#utilidad_global_diaria').empty().append(`<div class="px-3 py-2 d-flex align-items-center">
+                                                <div class="js-easy-pie-chart color-fusion-500 position-relative d-inline-flex align-items-center justify-content-center" data-percent="${utilidad_global[0].porcentaje}" data-piesize="50" data-linewidth="5" data-linecap="butt">
+                                                    <div class="d-flex flex-column align-items-center justify-content-center position-absolute pos-left pos-right pos-top pos-bottom fw-300 fs-lg">
+                                                        <span class="js-percent d-block text-dark"></span>
+                                                    </div>
+                                                </div>
+                                                <span class="d-inline-block ml-2 text-muted">
+                                                    Utilidad global del dia
+                                                    <i class="fal fa-caret-down color-success-500 ml-1"></i>
+                                                </span>
+                                                <div class="ml-auto d-inline-flex align-items-center">
+                                                    <div class="sparklines d-inline-flex" sparktype="line" sparkheight="30" sparkwidth="70" sparklinecolor="#fd3995" sparkfillcolor="false" sparklinewidth="1" values="${arr_utilidad_horas_ganancias_limit_10.toString()}"></div>
+                                                    <div class="d-inline-flex flex-column small ml-2">
+                                                        <span class="d-inline-block badge badge-danger opacity-50 text-center p-1 width-6">${(arr_utilidad_horas_ganancias_max).toFixed(2)}</span>
+                                                        <span class="d-inline-block badge bg-info-300 opacity-50 text-center p-1 width-6 mt-1">${(arr_utilidad_horas_ganancias_min).toFixed(2)}</span>
+                                                    </div>
+                                                </div>
+                                            </div>`)
+
+
+            //chart01 - Volumen de Jugada
+            let grafico01 = function(){
+                let options = {colors: [myapp_get_color.primary_700],series:{lines:{show: true,lineWidth: 0.5,fill: 0.9,fillColor:{colors: [{opacity: 0.6},{opacity: 0}]},},shadowSize: 0},
+                    grid:{borderColor: '#F0F0F0',borderWidth: 1,labelMargin: 5},
+                    xaxis:{color: '#F0F0F0',font:{size: 10,color: '#999'}},
+                    yaxis:{ min: 0,max: 100,color: '#F0F0F0',font:{size: 10,color: '#999'}}};
+                let plot = $.plot($("#chart01"), [ventas], options);};
+
+
+            //chart03 - Promedio dia
+            let grafico03 = function(){
+                let barlineCombineData = {labels: elementos_description,
+                                        datasets: [{type: 'line',label: 'Ticket',borderColor: myapp_get_color.danger_300,pointBackgroundColor: myapp_get_color.danger_500,pointBorderColor: myapp_get_color.danger_500,pointBorderWidth: 1,borderWidth: 2, pointRadius: 4,pointHoverRadius: 5,fill: false,data: elementos_ticket,label: 'Tickets',yAxisID: 'A',},
+                                                    {type: 'bar',label: 'Monto',backgroundColor: myapp_get_color.primary_300,borderColor: myapp_get_color.primary_500,data: elementos_monto,borderWidth: 1,label: 'Elementos $',yAxisID: 'B',}]};
+                let config = {type: 'bar',data: barlineCombineData,
+                    options:{responsive: true,legend:{position: 'top',},title:{display: true,text: 'Animalitos'},
+                            scales:{xAxes: [{display: true,scaleLabel:{display: false, labelString: '6 months forecast'}, gridLines:{display: true,color: "#f2f2f2"}, ticks:{beginAtZero: true, fontSize: 11}}],
+                                    yAxes: [{id: 'A',type: 'linear', position: 'left', scaleLabel:{ display: false,labelString: 'Profit margin (approx)'},gridLines:{display: true,color: "#f2f2f2" },ticks:{beginAtZero: true,fontSize: 11}},{id: 'B',type: 'linear',position: 'right',scaleLabel:{display: false,labelString: 'Profit margin (approx)'},gridLines:{display: true,color: "#f2f2f2"  },ticks:{beginAtZero: true,fontSize: 11}}]}}}
+                new Chart($("#chart03 > canvas").get(0).getContext("2d"), config);
+            }
+
+
+            //chart07 - Porcentaje frente animalito
+            let grafico07 = function(){
+                let config = {type: 'bubble',data:{labels: "Porcentajes",datasets: new_arr},
+                    options:{title:{display: true,text: 'Animalitos'},
+                            scales:{yAxes: [{scaleLabel:{display: true,labelString: "Porcentajes"}}],
+                                    xAxes: [{scaleLabel:{display: true,labelString: "Animalitos"}}] },
+                            tooltips: {callbacks: {label: function(t, d) {return d.datasets[t.datasetIndex].label + ': ' + t.yLabel + ' %';}}}}}
+                new Chart($("#chart07 > canvas").get(0).getContext("2d"), config);}
+
+
+            //chart04 - Utilidad media del dia
+            let grafico04 = function(){
+                let barlineCombineData2 = {labels: arr_utilidad_horas_horas,
+                                        datasets: [{type: 'line',label: 'Utilidad en %',borderColor: myapp_get_color.danger_300,pointBackgroundColor: myapp_get_color.danger_500,pointBorderColor: myapp_get_color.danger_500,pointBorderWidth: 1,borderWidth: 2, pointRadius: 4,pointHoverRadius: 5,fill: false,data: arr_utilidad_horas_porcentaje,label: 'Utilidad %',yAxisID: 'A',},
+                                                    {type: 'bar',label: 'Utilidad en Moneda',backgroundColor: myapp_get_color.primary_300,borderColor: myapp_get_color.primary_500,data: arr_utilidad_horas_ganancias,borderWidth: 1,label: 'Utilidad $',yAxisID: 'B',}]};
+                let config = {type: 'bar',data: barlineCombineData2,
+                    options:{responsive: true,legend:{position: 'top',},title:{display: true,text: 'Hora'},
+                            scales:{xAxes: [{display: true,scaleLabel:{display: false, labelString: '6 months forecast'}, gridLines:{display: true,color: "#f2f2f2"}, ticks:{beginAtZero: true, fontSize: 11}}],
+                                    yAxes: [{id: 'A',type: 'linear', position: 'left', scaleLabel:{ display: false,labelString: 'Profit margin (approx)'},gridLines:{display: true,color: "#f2f2f2" },ticks:{beginAtZero: true,fontSize: 11}},{id: 'B',type: 'linear',position: 'right',scaleLabel:{display: false,labelString: 'Profit margin (approx)'},gridLines:{display: true,color: "#f2f2f2"  },ticks:{beginAtZero: true,fontSize: 11}}]}}}
+                new Chart($("#chart04 > canvas").get(0).getContext("2d"), config);}
+
+
+            //chart05 - Distribucion de utilidad diario
+            let grafico05 = function(){let config = {
+                type: 'doughnut',data:{datasets: [{data: arr_distribucion_dias_monto,backgroundColor: [myapp_get_color.success_200,myapp_get_color.primary_50,myapp_get_color.success_400,myapp_get_color.primary_300,myapp_get_color.success_200,myapp_get_color.primary_50,myapp_get_color.success_400,myapp_get_color.primary_300],
+                                                  label: 'Utilidad Monetaria'}],labels: arr_distribucion_dias_label},options:{ responsive: true,legend:{display: true,position: 'bottom',}}};
+                new Chart($("#chart05 > canvas").get(0).getContext("2d"), config);}
+
+
+            //chart06 - Utilidad porcentual promedio del dia
+            let grafico06 = function(){
+                let config = {type: 'doughnut',data:{datasets: [
+                             {data: arr_distribucion_porcentual,backgroundColor: [ myapp_get_color.success_200,myapp_get_color.success_400,],label: 'My dataset'}],labels: ["UTILIDAD %","PROCENTUAL %",] },};
+                new Chart($("#chart06 > canvas").get(0).getContext("2d"), config);}
+
+            
+            //chart02 - Grafico global semanal de utilidad master
+            let grafico02 = function()
+            {
+                let barlineCombineData3 = {labels: arr_distribucion_semana_dia,
+                                        datasets: [{type: 'line',label: 'Util moneda', backgroundColor: 'rgba(136,106,181, 0.2)', borderColor: myapp_get_color.primary_500,pointBackgroundColor: myapp_get_color.primary_700,pointBorderColor: 'rgba(0, 0, 0, 0)',pointBorderWidth: 1,borderWidth: 1, pointRadius: 3,pointHoverRadius: 4,fill: true,data: arr_distribucion_semana_moneda,label: 'Util moneda',yAxisID: 'A',},
+                                                    {type: 'line',label: 'Util %',backgroundColor: 'rgba(29,201,183, 0.2)',borderColor: myapp_get_color.success_500,pointBackgroundColor: myapp_get_color.success_700,pointBorderColor: 'rgba(0, 0, 0, 0)',data: arr_distribucion_semana_porcentaje,pointBorderWidth: 1,borderWidth: 1,pointRadius: 3,pointHoverRadius: 4,fill: true,label: 'Util %',yAxisID: 'B',}]};
+                let config = {type: 'line',data: barlineCombineData3,
+                    options:{responsive: true,legend:{position: 'top',},title:{display: true,text: 'Hora'},
+                            scales:{xAxes: [{display: true,scaleLabel:{display: false, labelString: '6 months forecast'}, gridLines:{display: true,color: "#f2f2f2"}, ticks:{beginAtZero: true, fontSize: 11}}],
+                                    yAxes: [{id: 'A',type: 'linear', position: 'left', scaleLabel:{ display: false,labelString: 'Profit margin (approx)'},gridLines:{display: true,color: "#f2f2f2" },ticks:{beginAtZero: true,fontSize: 11}},{id: 'B',type: 'linear',position: 'right',scaleLabel:{display: false,labelString: 'Profit margin (approx)'},gridLines:{display: true,color: "#f2f2f2"  },ticks:{beginAtZero: true,fontSize: 11}}]}}}
+                new Chart($("#chart02 > canvas").get(0).getContext("2d"), config);
+            }
+
+
+            let agencias_lines = function(){$('#taquillas_lineas').css('display','none');$('#agencias_lineas').css('display','')}
+            let taquillas_lines = function(){$('#agencias_lineas').css('display','none');$('#taquillas_lineas').css('display','')}
+            $(document).ready(function(){grafico01();grafico02();grafico03();grafico04();grafico05();grafico06();grafico07()});
+
+
+        </script>
+    @endsection
+
+
+
+
+
+
+
+
+

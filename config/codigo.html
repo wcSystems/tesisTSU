@@ -1,0 +1,52 @@
+
+SELECT pregunta_id as pregunta, respuesta_option_id as respuesta_option, count(respuesta_option_id) as cantidad_respuesta_option from evaluation GROUP BY respuesta_option_id, pregunta_id  
+ORDER BY `pregunta` ASC, `respuesta_option` ASC, `cantidad_respuesta_option` ASC
+
+SELECT evaluation.pregunta_id as pregunta_id, evaluation_criterias.description as pregunta_decripcion, evaluation.respuesta_option_id as option_id, options.description as option_description, count(evaluation.respuesta_option_id) as total_respuesta FROM `evaluation` left JOIN evaluation_criterias on evaluation_criterias.id = evaluation.pregunta_id left JOIN options on options.id = evaluation.respuesta_option_id GROUP BY pregunta_id, option_id ORDER BY pregunta_id, option_id
+
+
+SELECT DISTINCT * FROM (
+    SELECT  
+    	T2.descripcion,
+    	T2.opcion,
+    	T1.pregunta, 
+    	CASE WHEN (T1.opcion = T2.opcion) THEN T1.total ELSE NULL END total
+	FROM
+    	(
+            SELECT 
+                evaluation.pregunta_id as pregunta, 
+                evaluation.respuesta_option_id as opcion, 
+                COUNT(evaluation.respuesta_option_id) AS total
+             FROM evaluation
+             GROUP BY 
+            		evaluation.pregunta_id, 
+            		evaluation.respuesta_option_id
+        ) T1,
+    
+    	(
+            SELECT 
+                DISTINCT evaluation.respuesta_option_id AS opcion,
+                         options.description as descripcion
+             FROM evaluation
+             JOIN options on options.id = evaluation.respuesta_option_id
+        ) T2
+    
+) Tx
+    WHERE Tx.total IS NOT NULL OR NOT EXISTS  
+    (
+        SELECT 
+            respuesta_option_id, 
+            pregunta_id, 
+            options.description, 
+            evaluation_criterias.description 
+        FROM 
+            evaluation 
+        JOIN options ON options.id = respuesta_option_id
+        JOIN evaluation_criterias on evaluation_criterias.id = evaluation.pregunta_id
+        WHERE 
+            respuesta_option_id = Tx.opcion AND 
+            options.description = Tx.descripcion AND 
+            pregunta_id = Tx.pregunta
+    )  
+
+        ORDER BY Tx.opcion,Tx.pregunta ASC
