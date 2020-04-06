@@ -1,2 +1,3 @@
-# loteria
-Sistema de loterias
+# tesisTSU 
+tesis Iutepal  
+https://wcsystems.github.io/tesisTSU/
